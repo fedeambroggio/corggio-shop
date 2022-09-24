@@ -21,7 +21,7 @@ function App() {
   return (
     <div>
       <NavBar links={links} />
-      <ItemListContainer greeting={"¡Bienvenidos a Corggio Shop!"}/>
+      <ItemListContainer greeting={"¡Bienvenidos a Corggio Shop!"} />
     </div>
   );
 }
