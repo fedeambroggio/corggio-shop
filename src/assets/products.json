@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "categoryId": 0,
+        "urlImg": "https://i.imgur.com/wkrsIAD.png",
+        "name": "Amoladora SKIL 9002",
+        "description": "700W de potencia",
+        "discount": 5,
+        "price": 7200,
+        "stock": 12
+    },
+    {
+        "id": 2,
+        "categoryId": 0,
+        "urlImg": "https://i.imgur.com/wkrsIAD.png",
+        "name": "Amoladora SKIL 9004",
+        "description": "830W de potencia",
+        "discount": 7,
+        "price": 8500,
+        "stock": 7
+    },
+    {
+        "id": 3,
+        "categoryId": 0,
+        "urlImg": "https://i.imgur.com/3v7dHUL.png",
+        "name": "Amoladora BOSCH GWS670",
+        "description": "630W de potencia",
+        "discount": 12,
+        "price": 11200,
+        "stock": 31
+    },
+    {
+        "id": 4,
+        "categoryId": 0,
+        "urlImg": "https://i.imgur.com/COTdN6p.jpeg",
+        "name": "Termofusora TAWAK",
+        "description": "800W de potencia",
+        "discount": 0,
+        "price": 4900,
+        "stock": 20
+    },
+    {
+        "id": 5,
+        "categoryId": 1,
+        "urlImg": "https://i.imgur.com/01qTNkH.png",
+        "name": "Guantes PU",
+        "description": "Puño tejido. Talle 10",
+        "discount": 0,
+        "price": 520,
+        "stock": 72
+    },
+    {
+        "id": 6,
+        "categoryId": 1,
+        "urlImg": "https://i.imgur.com/I6SBcWV.png",
+        "name": "Guantes Látex Rugoso",
+        "description": "Naranja y negro. Talle 10",
+        "discount": 10,
+        "price": 580,
+        "stock": 72
+    },
+    {
+        "id": 7,
+        "categoryId": 1,
+        "urlImg": "https://i.imgur.com/Zx3sAcl.png",
+        "name": "Guantes Nitrilo flocado",
+        "description": "Verde. Talle 10",
+        "discount": 0,
+        "price": 630,
+        "stock": 120
+    },
+    {
+        "id": 8,
+        "categoryId": 2,
+        "urlImg": "https://i.imgur.com/sTEa0v9.png",
+        "name": "Disco de corte 115mm",
+        "description": "1mm - 1,2mm - 1,6mm",
+        "discount": 0,
+        "price": 100,
+        "stock": 80
+    },
+    {
+        "id": 9,
+        "categoryId": 2,
+        "urlImg": "https://i.imgur.com/sxacO0r.png",
+        "name": "Disco FLAP 115mm",
+        "description": "Grano 40 - 60 - 80 - 100",
+        "discount": 15,
+        "price": 200,
+        "stock": 120
+    }
+]

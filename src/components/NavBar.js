@@ -9,6 +9,7 @@ import {
 import { IconChevronDown } from "@tabler/icons";
 import Logo from "../assets/logo.png";
 import { CartWidget } from "./CartWidget";
+import { Link } from "react-router-dom";
 
 const HEADER_HEIGHT = 64;
 
@@ -65,20 +66,18 @@ const useStyles = createStyles((theme) => ({
 export default function NavBar({ links }) {
     const { classes } = useStyles();
     const items = links.map((link) => {
-        const menuItems = link.links?.map((item) => (
-            <Menu.Item key={item.link}>{item.label}</Menu.Item>
-        ));
+        const menuItems = link.links?.map((item) =>  <Link key={item.link} to={item.link}><Menu.Item>{item.label}</Menu.Item></Link>);
 
         if (menuItems) {
             return (
                 <Menu
-                    key={link.label}
                     trigger="hover"
                     exitTransitionDuration={0}
                 >
                     <Menu.Target>
                         <a
                             href={link.link}
+                            key={link.link}
                             className={classes.link}
                             onClick={(event) => event.preventDefault()}
                         >
@@ -96,21 +95,22 @@ export default function NavBar({ links }) {
         }
 
         return (
-            <a
-                key={link.label}
-                href={link.link}
+            <Link
+                to={link.link}
+                key={link.link}
                 className={classes.link}
-                onClick={(event) => event.preventDefault()}
             >
                 {link.label}
-            </a>
+            </Link>
         );
     });
 
     return (
         <Header height={HEADER_HEIGHT} sx={{ borderBottom: 0, filter: "drop-shadow(0 2px 4px rgba(48, 48, 48, 0.5))" }}>
             <Container className={classes.inner} fluid>
-                <img src={Logo} alt="corggio" className={ classes.navbarLogo } />
+                <Link to={"/"}>
+                    <img src={Logo} alt="corggio" className={ classes.navbarLogo } />
+                </Link>
                 <Group spacing={5} className={classes.links}>
                     {items}
                 </Group>
