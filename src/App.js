@@ -3,6 +3,8 @@ import "./App.css";
 import { ItemListContainer } from "./components/ItemListContainer";
 import { ItemDetailContainer } from "./components/ItemDetailContainer";
 import NavBar from "./components/NavBar";
+import { CartProvider } from "./contexts/CartContext";
+import { CartContainer } from "./components/CartContainer";
 
 const links = [
     { link: "/", label: "Inicio" },
@@ -20,31 +22,46 @@ const links = [
 
 function App() {
     return (
-        <BrowserRouter>
-            <NavBar links={links} />
-            <Routes>
-                <Route
-                    path="/"
-                    element={
-                        <ItemListContainer
-                            greeting={"¡Bienvenidos a Corggio Shop!"}
-                        />
-                    }
-                >
+        <CartProvider>
+            <BrowserRouter>
+                <NavBar links={links} />
+                <Routes>
                     <Route
-                        path="/category/:id"
+                        path="/"
                         element={
                             <ItemListContainer
                                 greeting={"¡Bienvenidos a Corggio Shop!"}
                             />
                         }
+                    >
+                        <Route
+                            path="/category/:id"
+                            element={
+                                <ItemListContainer
+                                    greeting={"¡Bienvenidos a Corggio Shop!"}
+                                />
+                            }
+                        />
+                    </Route>
+                    <Route path="/item/:id" element={<ItemDetailContainer />} />
+                    <Route path="/cart" element={<CartContainer/>} />
+                    <Route
+                        path="*"
+                        element={
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    margin: "32px",
+                                }}
+                            >
+                                Página no encontrada
+                            </div>
+                        }
                     />
-                </Route>
-                <Route path="/item/:id" element={<ItemDetailContainer />} />
-                <Route path="/cart" element={<div>CARRITO</div>} />
-                <Route path="*" element={<div style={{display: "flex", justifyContent:"center", margin: "32px"}}>Página no encontrada</div>} />
-            </Routes>
-        </BrowserRouter>
+                </Routes>
+            </BrowserRouter>
+        </CartProvider>
     );
 }
 

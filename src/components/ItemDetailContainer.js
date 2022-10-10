@@ -31,21 +31,6 @@ export const ItemDetailContainer = () => {
         );
     }, [id]);
 
-    // No es posible hacer fetch dentro del proyecto. Se podría utilizar si hiciera una API
-    // const getItem = async () => {
-    //     try {
-    //         const resp = await fetch("../assets/products.json");
-    //         const data = await resp.json();
-    //         setItem(data.filter(item => item.id === id))
-    //     } catch {
-    //         console.log("ERROR")
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     getItem()
-    // }, [id]);
-
     return (
         <div className={classes.layout}>
             {!item ? (

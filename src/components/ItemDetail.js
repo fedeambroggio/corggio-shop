@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { createStyles, Badge, Button } from "@mantine/core";
 import { ItemCount } from "./ItemCount";
 import { Link } from "react-router-dom";
+import { CartContext } from "../contexts/CartContext";
 
 const useStyles = createStyles((theme) => ({
     layout: {
@@ -19,9 +20,23 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-export const ItemDetail = ({ name, price, stock, description, discount }) => {
+export const ItemDetail = ({
+    id,
+    name,
+    price,
+    stock,
+    description,
+    discount,
+}) => {
     const { classes } = useStyles();
-    const [itemsToCart, setItemsToCart] = useState(0);
+    const [showItemCount, setShowItemCount] = useState(true);
+
+    const { addProduct } = useContext(CartContext);
+    
+    const addItemsToCart = (count) => {
+        addProduct(id, name, price, count);
+        setShowItemCount(false);
+    };
 
     return (
         <div className={classes.layout}>
@@ -37,8 +52,8 @@ export const ItemDetail = ({ name, price, stock, description, discount }) => {
                 className={classes.row}
                 style={{ margin: "32px", alignSelf: "center" }}
             >
-                {itemsToCart === 0 ? (
-                    <ItemCount stock={stock} setItemsToCart={setItemsToCart} />
+                {showItemCount ? (
+                    <ItemCount stock={stock} addItemsToCart={addItemsToCart} />
                 ) : (
                     <Link to={`/cart`}>
                         <Button
