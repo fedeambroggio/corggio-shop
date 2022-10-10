@@ -31,13 +31,14 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-export const ItemCount = ({ stock }) => {
+export const ItemCount = ({ stock, setItemsToCart }) => {
     const { classes } = useStyles();
     const [count, setCount] = useState(0);
 
     const addItemToCart = () => {
         if (count > 0 && count <= stock) {
             console.log("¡Producto Agregado!")
+            setItemsToCart(count)
         } else {
             console.log("¡Stock insuficiente!")
         }

@@ -41,6 +41,7 @@ function App() {
                     />
                 </Route>
                 <Route path="/item/:id" element={<ItemDetailContainer />} />
+                <Route path="/cart" element={<div>CARRITO</div>} />
                 <Route path="*" element={<div style={{display: "flex", justifyContent:"center", margin: "32px"}}>Página no encontrada</div>} />
             </Routes>
         </BrowserRouter>
