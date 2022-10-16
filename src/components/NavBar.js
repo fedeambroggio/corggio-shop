@@ -114,7 +114,9 @@ export default function NavBar({ links }) {
                 <Group spacing={5} className={classes.links}>
                     {items}
                 </Group>
-                <CartWidget/>
+                <Link to={"/cart"}>
+                    <CartWidget/>
+                </Link>
             </Container>
         </Header>
     );

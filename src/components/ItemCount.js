@@ -33,7 +33,7 @@ const useStyles = createStyles((theme) => ({
 
 export const ItemCount = ({ stock, addItemsToCart }) => {
     const { classes } = useStyles();
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
 
     const addItemToCart = () => {
         if (count > 0 && count <= stock) {
@@ -44,12 +44,22 @@ export const ItemCount = ({ stock, addItemsToCart }) => {
         }
     }
 
+    const addCount = () => {
+        if (count < stock) 
+            setCount(count+1)
+    }
+
+    const subtractCount = () => {
+        if (count > 1) 
+            setCount(count-1)
+    }
+
     return (
         <div className={classes.itemCountLayout}>
             <div className={classes.itemCountButtonContainer}>
-                <button className={classes.itemCountButton} onClick={() => setCount(count-1)}>-</button>
+                <button className={classes.itemCountButton} onClick={ subtractCount }>-</button>
                 <input type="text" inputMode="numeric" className={classes.inputCount} value={count} onChange={(e) => setCount(parseInt(e.target.value)) } />
-                <button className={classes.itemCountButton} onClick={() => setCount(count+1)}>+</button>
+                <button className={classes.itemCountButton} onClick={ addCount }>+</button>
             </div>
             <Button
                 variant="gradient"

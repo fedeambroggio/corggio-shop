@@ -27,6 +27,7 @@ export const ItemDetail = ({
     stock,
     description,
     discount,
+    urlImg
 }) => {
     const { classes } = useStyles();
     const [showItemCount, setShowItemCount] = useState(true);
@@ -34,7 +35,7 @@ export const ItemDetail = ({
     const { addProduct } = useContext(CartContext);
     
     const addItemsToCart = (count) => {
-        addProduct(id, name, price, count);
+        addProduct(id, name, price, count, urlImg);
         setShowItemCount(false);
     };
 

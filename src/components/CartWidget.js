@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import {
     createStyles,
     Button,
 } from "@mantine/core";
 import { IconShoppingCart } from "@tabler/icons";
+import { CartContext } from "../contexts/CartContext";
 
 const useStyles = createStyles((theme) => ({
     cartButton: {
@@ -11,10 +13,19 @@ const useStyles = createStyles((theme) => ({
             backgroundColor: "#610000",
         },
     },
+    itemsText: {
+        fontFamily: "Roboto",
+        fontWeight: "700",
+        color: "#FFF",
+        fontSize: "14px",
+        marginLeft: "8px"
+    }
 }));
 
 export const CartWidget = () => {
     const { classes } = useStyles();
+    const { productsCount } = useContext(CartContext)
+    
     return (
         <Button
             radius="xl"
@@ -22,6 +33,7 @@ export const CartWidget = () => {
             classNames={{ root: classes.cartButton }}
         >
             <IconShoppingCart />
+            {productsCount() > 0 && <p className={classes.itemsText}>{productsCount()}</p>}
         </Button>
     );
 };
