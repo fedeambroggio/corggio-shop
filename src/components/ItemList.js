@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createStyles } from "@mantine/core";
 import { Item } from "./Item";
-import products from "../assets/products.json";
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore"
 
 const useStyles = createStyles((theme) => ({
     itemListLayout: {
@@ -23,27 +23,20 @@ export const ItemList = ({ categoryId }) => {
     const [items, setItems] = useState(null);
     const { classes } = useStyles();
 
-    const getProducts = new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(JSON.parse(JSON.stringify(products)));
-        }, 2000);
-    });
+    useEffect(() => {        
+        const db = getFirestore();
+        const itemsCollection = collection(db, "items");
 
-    useEffect(() => {
-        setItems(null);
-        getProducts
-            .then((res) => {
-                if (categoryId === undefined) {
-                    setItems(res);
-                } else {
-                    setItems(
-                        res.filter(
-                            (item) => item.categoryId === parseInt(categoryId)
-                        )
-                    );
-                }
+        if (categoryId !== undefined) {
+            const q = query(itemsCollection, where("categoryId", "==", parseInt(categoryId)))
+            getDocs(q).then(res => {
+                setItems(res.docs.map(doc=>({id: doc.id, ...doc.data()})))
             })
-            .catch((err) => console.log(err));
+        } else {
+            getDocs(itemsCollection).then(res => {
+                setItems(res.docs.map(doc=>({id: doc.id, ...doc.data()})))
+            })
+        }
     }, [categoryId]);
 
     return (

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createStyles } from "@mantine/core";
 import { useParams } from "react-router-dom";
 import { ItemDetail } from "./ItemDetail";
-import products from "../assets/products.json";
+import { doc, getDoc, getFirestore } from "firebase/firestore"
 
 const useStyles = createStyles((theme) => ({
     layout: {
@@ -22,13 +22,14 @@ export const ItemDetailContainer = () => {
     const { classes } = useStyles();
     const { id } = useParams();
     const [item, setItem] = useState(null);
-
+    
     useEffect(() => {
-        setItem(
-            JSON.parse(JSON.stringify(products)).filter(
-                (item) => item.id === parseInt(id)
-            )[0]
-        );
+        const db = getFirestore();
+        const itemRef = doc(db, "items", id);
+
+        getDoc(itemRef).then(res => {
+            setItem({id: res.id, ...res.data()})
+        })
     }, [id]);
 
     return (

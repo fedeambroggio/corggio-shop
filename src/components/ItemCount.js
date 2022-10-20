@@ -37,10 +37,7 @@ export const ItemCount = ({ stock, addItemsToCart }) => {
 
     const addItemToCart = () => {
         if (count > 0 && count <= stock) {
-            console.log("¡Producto Agregado!")
             addItemsToCart(count)
-        } else {
-            console.log("¡Stock insuficiente!")
         }
     }
 
