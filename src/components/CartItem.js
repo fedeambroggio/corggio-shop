@@ -22,17 +22,25 @@ const useStyles = createStyles((theme) => ({
         textAlign: "center",
     },
     icon: {
-        cursor: "pointer"
-    }
+        cursor: "pointer",
+    },
 }));
 
-export const CartItem = ({ id, name, urlImg, price, quantity, key }) => {
+export const CartItem = ({
+    id,
+    name,
+    urlImg,
+    price,
+    quantity,
+    key,
+    version,
+}) => {
     const { classes } = useStyles();
     const { removeProduct } = useContext(CartContext);
 
     const deleteItems = () => {
-        removeProduct(id)
-    }
+        removeProduct(id);
+    };
 
     return (
         <tr className={classes.tableRow} key={key}>
@@ -51,9 +59,11 @@ export const CartItem = ({ id, name, urlImg, price, quantity, key }) => {
             <td className={classes.tableColumn}>
                 <p className={classes.text}>$ {quantity * price}</p>
             </td>
-            <td className={classes.tableColumn}>
-                <IconTrash className={classes.icon} onClick={ deleteItems } />
-            </td>
+            {version !== "details" && (
+                <td className={classes.tableColumn}>
+                    <IconTrash className={classes.icon} onClick={deleteItems} />
+                </td>
+            )}
         </tr>
     );
 };

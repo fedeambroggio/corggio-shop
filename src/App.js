@@ -5,10 +5,11 @@ import { ItemDetailContainer } from "./components/ItemDetailContainer";
 import NavBar from "./components/NavBar";
 import { CartProvider } from "./contexts/CartContext";
 import { CartContainer } from "./components/CartContainer";
+import { SeeOrders } from "./components/SeeOrders";
 
 const links = [
     { link: "/", label: "Inicio" },
-    { link: "/sales", label: "Ofertas" },
+    { link: "/see-order", label: "Consultar" },
     {
         links: [
             { link: "/category/0", label: "Eléctricos" },
@@ -17,7 +18,6 @@ const links = [
         ],
         label: "Categorías",
     },
-    { link: "/about", label: "Nosotros" },
 ];
 
 function App() {
@@ -45,6 +45,7 @@ function App() {
                     </Route>
                     <Route path="/item/:id" element={<ItemDetailContainer />} />
                     <Route path="/cart" element={<CartContainer/>} />
+                    <Route path="/see-order" element={<SeeOrders/>} />
                     <Route
                         path="*"
                         element={
